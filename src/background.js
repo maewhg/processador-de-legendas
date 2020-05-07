@@ -30,7 +30,11 @@ function createWindow () {
     win.loadURL('app://./index.html')
   }
 
-  win.webContents.on('did-finish-load', () => {console.log('terminou')})
+  win.webContents.on('did-finish-load', () => {
+    console.log('terminou')
+    const {title, version} = require('../package.json') //importa o title e a versao e define no titulo
+    win.setTitle(`${title} :: ${version}`)
+  })
 
   win.on('closed', () => {
     win = null
